@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PromiseDemo</title>
+</head>
+<body>
+    <script>
+        function get() {
+            return new Promise((resolve, reject)=>{
+                let flag = false
+
+                // 模拟异步操作
+                window.setTimeout(()=>{
+                    if(flag){
+                        resolve('true')
+                    }
+                    else{
+                        reject('false')
+                    }
+                },500)
+                
+            })
+        }
+
+        async function main() {
+            // let res = await get()
+            // if(res) console.log('res:',res);
+            // else console.log('fail!');
+
+            get().then((res)=>{
+                console.log('res:',res);
+            }).catch(error => {
+                console.log('error:', error);
+            })
+        }
+
+        main() //入口
+    </script>
+</body>
+</html>
